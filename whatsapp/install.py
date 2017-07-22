@@ -6,12 +6,6 @@ print('Installing python messenger')
 
 os.chdir('yowsup')
 
-with open('yowsup/env/env.py', 'r') as fenv:
-    data = fenv.read()
-    data.replace('DEFAULT = "s40"', 'DEFAULT = "android"')
-with open('yowsup/env/env.py', 'w') as fenv:
-    fenv.write(data)
-
 with open('yowsup/env/env_android.py', 'r') as fenv_android:
     data = fenv_android.readlines()
 with open('yowsup/env/env_android.py', 'w') as fenv_android:

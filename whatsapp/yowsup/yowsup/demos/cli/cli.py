@@ -140,9 +140,8 @@ class Cli(object):
     def doExecCmd(self, fn):
         return fn()
 
-
     def startInputThread(self):
-        #cv.acquire()
+        # cv.acquire()
         # Fix Python 2.x.
         global input
         try: input = raw_input

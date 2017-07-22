@@ -1,23 +1,26 @@
-from yowsup.stacks import  YowStackBuilder
-from layer import EchoLayer
-from yowsup.layers.auth import AuthError
-from yowsup.layers import YowLayerEvent
-from yowsup.layers.network import YowNetworkLayer
+import sys
+import json
+from stack import BotStack
 from yowsup.env import YowsupEnv
+from sys import argv
 
-credentials = ("79256399913", "jucYzQiIX62ip6zrA7ak5gKIHHQ=") # replace with your phone and password
+if len(argv) == 2:
+    port = int(argv[1])
+else:
+    port = 80
 
-print('started')
-if __name__==  "__main__":
-    print('main')
-    stackBuilder = YowStackBuilder()
+YowsupEnv.setEnv('s40')
 
-    stack = stackBuilder\
-        .pushDefaultLayers(True)\
-        .push(EchoLayer)\
-        .build()
+with open('config.json', 'r') as config:
+    data = json.loads(config.read())
 
-    stack.setCredentials(credentials)
-    stack.broadcastEvent(YowLayerEvent(YowNetworkLayer.EVENT_STATE_CONNECT))   #sending the connect signal
-    stack.loop() #this is the program mainloop
-    print('end')
+credentials = (data['phone'], data['password'])
+token = data['token']
+
+try:
+    stack = BotStack(credentials, True, token=token, port=3000)
+    print('Starting.')
+    stack.start()
+except KeyboardInterrupt:
+    print("\nInterrupted.")
+    sys.exit(0)
