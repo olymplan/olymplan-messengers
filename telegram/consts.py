@@ -1,8 +1,9 @@
-BOT_TOKEN = 'TOKEN'
+BOT_TOKEN = '397172442:AAFcchDt41Ihd6QB-GsZrFZPz1XFmkzdiyQ'
 START_MESSAGE_PRIVATE = "Привет! Я бот сайта olymplan.ru. Я могу уведомлять тебя о приближающихся олимпиадах " \
                         "и показывать тебе список олимпиад. Для полного списка комманд набери /commands"
 HELP_MESSAGE = START_MESSAGE_PRIVATE
 MENU_MESSAGE_PRIVATE = "Это меню!"
+SCHEDULE_NO_USER = 'Упс! Что-то пошло не так. Вы точно зарегестрированы на сайте с ником "{}"?'
 # CHECK_SCHEDULE_TEXT = 'Check schedule'
 # CHECK_TASKS_TEXT = 'Check hometask'
 # ADD_TASK_TEXT = 'Add hometask'
@@ -18,6 +19,7 @@ MENU_MESSAGE_PRIVATE = "Это меню!"
 # NO_TASKS_MESSAGE = 'No tasks! Hooray!'
 COMMANDS = '/start - Запустить бота\n' \
            '/menu - Показать меню\n' \
+           '/schedule - Расписание олимпиадёт\n'\
            '/cancel - Отменить текущее действие\n' \
            '/commands - Показать комманды\n' \
 # DISCIPLINE_ALIASES = {'английский' : DISCIPLINES[0],
