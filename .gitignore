@@ -1,3 +1,4 @@
+#
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -98,4 +99,6 @@ venv/
 /site
 
 # mypy
+
+.idea
 .mypy_cache/
