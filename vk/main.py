@@ -4,8 +4,8 @@ import requests
 import json
 import sys
 app = Flask(__name__)
-TOKEN = 'TOKEN'
-confirmation_token = ''
+TOKEN = os.environ['OLYMPLAN_VK_TOKEN']
+CONFIRMATION_TOKEN = os.environ['OLYMPLAN_VK_CTOKEN']
 
 def method(name, params, token):
     response = requests.get('https://api.vk.com/method/' + name, params={**params, 'access_token' : token})
@@ -20,7 +20,7 @@ def process():
     if 'type' not in data.keys():
         return 'not vk'
     if data['type'] == 'confirmation':
-        return confirmation_token
+        return CONFIRMATION_TOKEN
     elif data['type'] == 'message_new':
         if data['object']['body'].lower() == 'расписание':
             ''
