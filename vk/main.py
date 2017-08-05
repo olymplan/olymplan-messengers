@@ -10,7 +10,7 @@ TOKEN = os.environ['OLYMPLAN_VK_TOKEN']
 CONFIRMATION_TOKEN = os.environ['OLYMPLAN_VK_CTOKEN']
 
 def log(string):
-    print('[{}] {}'.format(str(datetime.datetime.now()), string), file=sys.stderr)
+    print('[{}] {}'.format(str(datetime.datetime.now()), string), file=sys.stderr, flush=True)
 
 def method(name, params, token):
     response = requests.get('https://api.vk.com/method/' + name, params={**params, 'access_token' : token})
