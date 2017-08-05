@@ -5,7 +5,10 @@ import json
 import sys
 import os
 import datetime
+
 app = Flask(__name__)
+
+PORT = int(sys.argv[1])
 TOKEN = os.environ['OLYMPLAN_VK_TOKEN']
 CONFIRMATION_TOKEN = os.environ['OLYMPLAN_VK_CTOKEN']
 
@@ -57,7 +60,7 @@ if __name__ == "__main__":
 
         resource = WSGIResource(reactor, reactor.getThreadPool(), app)
         site = Site(resource)
-        reactor.listenTCP(1337, site, interface='0.0.0.0')
+        reactor.listenTCP(PORT, site, interface='0.0.0.0')
         reactor.run(**reactor_args)
         
     run_twisted_wsgi()
