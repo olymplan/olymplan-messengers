@@ -1,0 +1,2 @@
+-r ./vk/requirements.txt
+-r ./telegram/requirements.txt
