@@ -14,6 +14,12 @@ you can install requirements using pip:
     $ python ./telegram/main.py
 
 ### VK bot
+Set VK API tokens:
+
+    $ export OLYMPLAN_VK_TOKEN=YOUR_TOKEN
+    $ export OLYMPLAN_VK_CTOKEN=YOUR_CONFIRMATION_TOKEN
+Launch bot:
+
     $ python ./vk/main.py
   
 ### Whatsapp bot
