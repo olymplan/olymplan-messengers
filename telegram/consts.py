@@ -1,4 +1,3 @@
-BOT_TOKEN = 'TOKEN'
 START_MESSAGE_PRIVATE = "Привет! Я бот сайта olymplan.ru. Я могу уведомлять тебя о приближающихся олимпиадах " \
                         "и показывать тебе список олимпиад. Для полного списка комманд набери /commands"
 HELP_MESSAGE = START_MESSAGE_PRIVATE

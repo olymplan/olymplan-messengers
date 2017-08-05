@@ -3,17 +3,25 @@ import telebot
 import pickle
 import datetime
 import os.path
+import os
 import requests
 import json
+import sys
 from collections import defaultdict
 from my_lib import *
 from consts import *
 from telebot import types
 
+BOT_TOKEN=os.environ['OLYMPLAN_TG_TOKEN']
+
 usersfile = 'users.p'
 
 bot = telebot.TeleBot(BOT_TOKEN)
 users = {}
+
+def log(string):
+    print('[{}] {}'.format(str(datetime.datetime.now()), string), file=sys.stderr, flush=True)
+
 if os.path.isfile(usersfile) and os.path.getsize(usersfile) > 0:
     with open(usersfile, 'rb') as f:
         users = pickle.load(f)
@@ -29,7 +37,7 @@ def id_saver(func):
         return func(*args, **kwargs)
     return wrapped
 
-print("----------\nSTARTED!\n----------")
+log("\n----------\nSTARTED!\n----------")
 
 @id_saver
 @bot.message_handler(commands=['start'])
@@ -62,7 +70,7 @@ def handle_menu(message):
         try:
             contests = requests.get('http://dev.olymplan.ru/api/schedule/tg/' + message.from_user.username, timeout=2).text
         except requests.exceptions.Timeout as e:
-            print('No user {} in api'.format(message.from_user.username))
+            log('No user {} in api'.format(message.from_user.username))
             bot.send_message(message.chat.id, SCHEDULE_NO_USER.format(message.from_user.username))
             return
         bot.send_message(message.chat.id, contests)
@@ -108,7 +116,7 @@ def debug_message(message):
     """
     Prints information about message to console.
     """
-    print('[{}]\n>> "{}"\n>> From "{} {}" (@{} : {}) in chat "{}" ({}). Message id: {}'.format(
+    log('[{}]\n>> "{}"\n>> From "{} {}" (@{} : {}) in chat "{}" ({}). Message id: {}'.format(
         datetime.datetime.fromtimestamp(message.date).strftime('%d.%m.%Y %H:%M:%S'),
         message.text,
         message.from_user.first_name,

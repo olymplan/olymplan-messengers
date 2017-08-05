@@ -11,6 +11,13 @@ you can install requirements using pip:
   
 # <a id="usage"></a> Usage
 ### Telegram bot
+
+Set Telegram API tokens:
+
+    $ export OLYMPLAN_TG_TOKEN=YOUR_TOKEN
+
+Launch bot
+
     $ python ./telegram/main.py
 
 ### VK bot
